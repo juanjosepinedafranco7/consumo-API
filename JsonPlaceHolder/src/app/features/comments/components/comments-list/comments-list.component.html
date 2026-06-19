@@ -1,0 +1,26 @@
+<div class="comments-container">
+  <header class="comments-header">
+    <h1>Panel de Comentarios</h1>
+    <p class="subtitle">Información consumida dinámicamente desde JSONPlaceholder</p>
+  </header>
+
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner"></div>
+    <p>Cargando información desde el servidor...</p>
+  </div>
+
+  <div *ngIf="error" class="error-state">
+    <span class="error-icon">⚠️</span>
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="!loading && !error" class="comments-grid">
+    <div class="comment-card" *ngFor="let comment of comments">
+      <div class="card-badge">ID: {{ comment.id }}</div>
+      <h3 class="card-title">{{ comment.name }}</h3>
+      <p class="card-email">✉️ {{ comment.email }}</p>
+      <hr class="divider">
+      <p class="card-body">"{{ comment.body }}"</p>
+    </div>
+  </div>
+</div>
